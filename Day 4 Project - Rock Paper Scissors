@@ -1,0 +1,43 @@
+rock = '''
+    _______
+---'   ____)
+      (_____)
+      (_____)
+      (____)
+---.__(___)
+'''
+
+paper = '''
+    _______
+---'   ____)____
+          ______)
+          _______)
+         _______)
+---.__________)
+'''
+
+scissors = '''
+    _______
+---'   ____)____
+          ______)
+       __________)
+      (____)
+---.__(___)
+'''
+import random
+
+choice = int(input("What do you chose ? 0-Rock 1-Paper 2-Scisors "))
+graphics = [rock, paper, scissors]
+if (choice >= 3):
+    print("Invalid number choice...")
+else:
+    print(graphics[choice])
+computer_choice = random.randint(0, 2)
+print(f"Computer choses \n{graphics[computer_choice]}")
+
+if (choice == computer_choice):
+    print("Draw! Better luck next time!")
+elif (computer_choice == choice + 1 or choice == 2 and computer_choice == 0):
+    print("You lost!")
+else:
+    print("Winner!")
