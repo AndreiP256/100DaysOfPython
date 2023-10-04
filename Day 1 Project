@@ -1,0 +1,7 @@
+# Day 1 Project
+# Band Name Generator
+print("Hey, this is band name generator 5000")
+city_name = input("Pick a city, any city: ")
+pet_name = input("Give me your pet's name: ")
+band_name = city_name + " " + pet_name
+print(band_name)
