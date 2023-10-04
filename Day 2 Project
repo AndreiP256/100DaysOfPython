@@ -1,0 +1,6 @@
+# Day 2 Project
+# Tip Calculator
+bill = float(input("Welcome to tip calculator./nWhat was the total bill ? "))
+procentage = int(input("What procentage would you like to give (int pls) ? "))
+nr_people = int(input("How many people to split ? "))
+print(f"Each person should pay {round(((bill+procentage/100*bill)/nr_people),2)}")
