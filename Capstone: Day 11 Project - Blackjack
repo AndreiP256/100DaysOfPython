@@ -1,0 +1,62 @@
+############### Blackjack Project #####################
+
+
+def play():
+    clear()
+    print(logo)
+    my_cards = []
+    computer_cards = []
+    deal(2, my_cards)
+    deal(2, computer_cards)
+    if (sum(computer_cards) == 21):
+        print("BLACKJACK! Computer wins!")
+        print(f"Your cards: {my_cards}, current score: {sum_cards(my_cards)}")
+        print(
+            f"Dealer cards: {computer_cards}, current score: {sum_cards(computer_cards)}"
+        )
+        return
+    else:
+        if (sum(my_cards) == 21):
+            print("BLACKJACK! You win!")
+            print(
+                f"Your cards: {my_cards}, current score: {sum_cards(my_cards)}"
+            )
+            print(
+                f"Dealer cards: {computer_cards}, current score: {sum_cards(computer_cards)}"
+            )
+            return
+    want_more = True
+    while (want_more):
+        show_cards(my_cards, computer_cards)
+        want = input("Do you want another card ? y / n \n")
+        if (want == "n"):
+            want_more = False
+        else:
+            if (sum_cards(computer_cards) < 17):
+                deal(1, computer_cards)
+            deal(1, my_cards)
+            if (sum_cards(my_cards) >= 21):
+                want_more = False
+
+    print(f"Your cards: {my_cards}, current score: {sum_cards(my_cards)}")
+    print(
+        f"Dealer cards: {computer_cards}, current score: {sum_cards(computer_cards)}"
+    )
+    if (sum_cards(my_cards) <= 21):
+        if (sum_cards(my_cards) > sum_cards(computer_cards)):
+            print("You WON! Congrats!")
+        elif (sum_cards(my_cards) == sum_cards(computer_cards)):
+            print("Draw... mabye play again ;) ")
+        else:
+            print("You Lost! Better luck next time!")
+    else:
+        print("You went over 21! Unfortunately you lost...")
+
+
+Ended = False
+while (not Ended):
+    playing = input("Do you want to play a game of blackjack ? y / n \n")
+    if (playing == 'n'):
+        Ended = True
+    else:
+        play()
