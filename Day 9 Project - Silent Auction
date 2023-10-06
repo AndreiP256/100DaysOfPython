@@ -1,0 +1,47 @@
+logo = '''
+                         ___________
+                         \         /
+                          )_______(
+                          |"""""""|_.-._,.---------.,_.-._
+                          |       | | |               | | ''-.
+                          |       |_| |_             _| |_..-'
+                          |_______| '-' `'---------'` '-'
+                          )"""""""(
+                         /_________\\
+                       .-------------.
+                      /_______________\\
+'''
+from replit import clear
+
+Ended = False
+bids_and_bidders = {}
+
+def find_bidder(records):
+  highest_bid = -1
+  highest_bidder = ""
+  for key in records:
+    if records[key] > highest_bid:
+        highest_bid = records[key]
+        highest_bidder = key
+  print(f"{highest_bidder} has WON ! They paid {highest_bid}$. Congrats!")
+
+print(logo)
+while (not Ended):
+    bidderName = input("What is your name ?\n ")
+    bid = int(input("How much would you like to bid ?\n"))
+    more_bidders = input("Are there any more bidders ? \"yes\" or \"no\" \n")
+    bids_and_bidders[bidderName] = bid
+    #if(bid > highest_bid)
+    #  highest_bid=bid
+    #  highest_bidder=name
+    # this would be the better version but it doesnt use dictionaries
+
+    if (more_bidders == "no"):
+        Ended = True
+    else:
+        clear()
+find_bidder(bids_and_bidders)
+
+
+
+#HINT: You can call clear() to clear the output in the console.
