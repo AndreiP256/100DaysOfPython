@@ -1,0 +1,44 @@
+#Number Guessing Game:
+
+import random
+EASY_LEVEL_TURNS = 10
+HARD_LEVEL_TURNS = 5
+
+def play(max_attempts):
+  Ended=False
+  attempts=0
+  while(not Ended and attempts<max_attempts):
+    guess=int(input("Guess a number: "))
+    attempts+=1
+    if(guess==computer_number):
+      print(f"You guessed ! It only took {attempts} attempts.")
+      Ended=True
+    elif(guess<computer_number):
+      print("Too low...")
+    else:
+      print("Too high...")
+  if(attempts==max_attempts):
+    print(f"You ran out of turns... the answer was {computer_number}.")
+    
+
+logo='''
+   _____                       _______ _            _   _                 _               
+  / ____|                     |__   __| |          | \ | |               | |              
+ | |  __ _   _  ___  ___ ___     | |  | |__   ___  |  \| |_   _ _ __ ___ | |__   ___ _ __ 
+ | | |_ | | | |/ _ \/ __/ __|    | |  | '_ \ / _ \ | . ` | | | | '_ ` _ \| '_ \ / _ \ '__|
+ | |__| | |_| |  __/\__ \__ \    | |  | | | |  __/ | |\  | |_| | | | | | | |_) |  __/ |   
+  \_____|\__,_|\___||___/___/    |_|  |_| |_|\___| |_| \_|\__,_|_| |_| |_|_.__/ \___|_|   
+                                                                                          
+                                                                                          '''
+print(logo)
+print("Welcome to Guessing Game ! \n I am thinking of a number betwen 1 and 100...")
+
+computer_number=random.randint(1,100)
+
+game_mode=input("Dp you want the \"hard\" or \"easy\" mode ?\n")
+if(game_mode=="hard"):
+  play(HARD_LEVEL_TURNS)
+elif(game_mode=="easy"):
+  play(EASY_LEVEL_TURNS)
+else:
+  print("Incorect gamemode!")
