@@ -1,0 +1,60 @@
+logo = """
+    __  ___       __             
+   / / / (_)___ _/ /_  ___  _____
+  / /_/ / / __ `/ __ \/ _ \/ ___/
+ / __  / / /_/ / / / /  __/ /    
+/_/ ///_/\__, /_/ /_/\___/_/     
+   / /  /____/_      _____  _____
+  / /   / __ \ | /| / / _ \/ ___/
+ / /___/ /_/ / |/ |/ /  __/ /    
+/_____/\____/|__/|__/\___/_/     
+"""
+
+vs = """
+ _    __    
+| |  / /____
+| | / / ___/
+| |/ (__  ) 
+|___/____(_)
+"""
+from game_data import data
+import random
+from replit import clear
+
+data_length = len(data)
+Ended=False
+score=0
+option_A = random.randint(0, data_length)
+while(not Ended):
+  print(logo)
+  option_B = random.randint(0, data_length)
+  while(option_B==option_A):
+    option_B = random.randint(0, data_length)
+  print(f"Compare A: {data[option_A]['name']}, {data[option_A]['description']}, from {data[option_A]['country']}")
+  print(vs)
+  print(f"Against B: {data[option_B]['name']}, {data[option_B]['description']}, from {data[option_B]['country']}")
+  choice = input("Which has more followes ? A or B ? \n")
+  if(choice=="A"):
+    if(data[option_A]['follower_count']>data[option_B]['follower_count']):
+      score+=1
+      option_A=option_B
+      clear()
+      print(f"You're Right! Current Score: {score}")
+    else:
+      print("Sorry, you are wrong...")
+      Ended=True
+  elif(choice=="B"):
+    if(data[option_B]['follower_count']>data[option_A]['follower_count']):
+      score+=1
+      option_A=option_B
+      clear()
+      print(f"You're Right! Current Score: {score}")
+    else:
+      print("Sorry, you are wrong...")
+      Ended=True
+  else:
+    clear()
+    print("Invalid Choice")
+  
+print(f"Game ended. You managed to score {score} points.")
+
